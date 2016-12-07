@@ -8,6 +8,11 @@ v0.0.3 🎉 - by [@thekitze](http://kitze.io)
 -
 
 ![](https://i.imgur.com/ceORWWQ.png)
+
+### Demo
+- [Example with styled-components](https://github.com/kitze/styles-debugger-styled-components-example)
+- [Example with aphrodite](https://github.com/kitze/styles-debugger-aphrodite-example)
+
 ### Usage example: styled-components
 
 1. Initialize the debugger (i.e in a separate file ```~/config/styles-debug.js```)
