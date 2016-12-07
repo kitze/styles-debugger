@@ -1,4 +1,4 @@
-import {getRandomColor} from './utils';
+import {getRandomColor, getPaletteColor} from './utils';
 
 const debugTemplateLiterals = (defaultParams = {}) => {
 
@@ -21,6 +21,9 @@ const debugTemplateLiterals = (defaultParams = {}) => {
             position                  = 1,
           }                           = mergedParams;
 
+    if (params.pretty) {
+      color = getPaletteColor(params.pretty)
+    }
     const displayText = showText === true && !!text;
     return `
       ${displayText && `position: relative`};
