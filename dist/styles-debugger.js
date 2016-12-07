@@ -43,7 +43,7 @@ var debugTemplateLiterals = function debugTemplateLiterals() {
         position = _ref$position === undefined ? defaultPosition : _ref$position;
 
     var displayText = showText === true && !!text;
-    return '\n      ' + (displayText && 'position: relative') + ';\n      ' + (debugWith === 'border' && 'border: ' + borderSize + 'px solid ' + color) + ';\n      ' + (debugWith === 'background' && 'background-color: ' + color) + ';\n      ' + styles.element + ';\n      ' + (displayText && '&:' + pseudoElement + '{\n          content: \'' + text + '\';\n          background-color: #eaeaea;\n          color: gray;\n          padding: 2px 10px;\n          text-align: center;\n          position: absolute;\n          ' + (position === 1 && '\n            top: 0;\n            left: 0;\n          ') + ';\n          ' + (position === 2 && '\n            top: 0;\n            right: 0;\n          ') + ';\n          ' + (position === 3 && '\n            bottom: 0;\n            right: 0;\n          ') + ';\n          ' + (position === 4 && '\n            bottom: 0;\n            left: 0;\n          ') + ';\n          ' + styles.name + ';\n      }');
+    return '\n      ' + (displayText && 'position: relative') + ';\n      ' + (debugWith === 'border' && 'border: ' + borderSize + 'px solid ' + color) + ';\n      ' + (debugWith === 'background' && 'background-color: ' + color) + ';\n      ' + styles.element + ';\n      ' + (displayText && '&:' + pseudoElement + '{\n          content: \'' + text + '\';\n          background-color: #eaeaea;\n          color: gray;\n          font-size: 12px;\n          padding: 2px 10px;\n          text-align: center;\n          position: absolute;\n          ' + (position === 1 && '\n            top: 0;\n            left: 0;\n          ') + ';\n          ' + (position === 2 && '\n            top: 0;\n            right: 0;\n          ') + ';\n          ' + (position === 3 && '\n            bottom: 0;\n            right: 0;\n          ') + ';\n          ' + (position === 4 && '\n            bottom: 0;\n            left: 0;\n          ') + ';\n          ' + styles.name + ';\n      }');
   };
 };
 
@@ -173,8 +173,9 @@ var debugObjects = function debugObjects() {
     var displayText = showText === true && !!text;
     return _extends({}, displayText && { position: 'relative' }, debugWith === 'border' && { border: borderSize + 'px solid ' + color }, debugWith === 'background' && { backgroundColor: color }, styles.element, displayText && defineProperty({}, ':' + pseudoElement, _extends({
       content: '"' + text + '"',
-      backgroundColor: 'yellow',
-      color: 'red',
+      color: 'gray',
+      backgroundColor: '#eaeaea',
+      fontSize: 12,
       padding: '2px 10px',
       textAlign: 'center',
       position: 'absolute'
