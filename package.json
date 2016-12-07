@@ -1,0 +1,44 @@
+{
+  "name": "styles-debugger",
+  "version": "0.0.1",
+  "description": "A helper for debugging CSS-in-JS styles",
+  "main": "dist/styles-debugger.js",
+  "jsnext:main": "dist/styles-debugger.es2015.js",
+  "scripts": {
+    "build": "./node_modules/rollup-babel-lib-bundler/bin/index.js index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kitze/styles-debugger.git"
+  },
+  "keywords": [
+    "kitze",
+    "styles",
+    "debugger",
+    "css in js"
+  ],
+  "author": "Kitze <kristijan.mkd@gmail.com> (http://kitze.io/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kitze/styles-debugger/issues"
+  },
+  "homepage": "https://github.com/kitze/styles-debugger#readme",
+  "devDependencies": {
+    "babel-plugin-add-module-exports": "0.2.1",
+    "babel-polyfill": "6.13.0",
+    "babel-preset-es2015": "6.14.0",
+    "babel-preset-es2015-rollup": "1.2.0",
+    "babel-preset-stage-0": "6.5.0",
+    "rollup-babel-lib-bundler": "3.1.0"
+  },
+  "rollupBabelLibBundler": {
+    "moduleName": "stylesDebugger",
+    "dest": "dist",
+    "babel": {
+      "presets": [
+        "es2015-rollup",
+        "stage-0"
+      ]
+    }
+  }
+}
