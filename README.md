@@ -23,6 +23,7 @@ export default debug;
 ```js
 import styled from 'styled-components';
 import debug from 'config/styles-debug';
+
 const Header = styled.div`
 	width: 100%;
 	background-color: red;
@@ -46,7 +47,8 @@ export default debug;
 
 ```js
 import {StyleSheet} from 'aphrodite';
-import debug from 'config/styles-debug'	;
+import debug from 'config/styles-debug';
+
 const styles = StyleSheet.create({
 	Header: {
 		width: '100%',
@@ -63,12 +65,14 @@ Each debugger instance can accept an object with params for configuration. For e
 
 ```js
 import {JavascriptStylesDebugger} from 'styles-debugger';
+
 const debug = JavascriptStylesDebugger({
 	pseudoElement: 'before',
 	color: 'red',
 	borderSize: 3,
 	position: 3
 });
+
 export default debug;
 ```
 
@@ -88,6 +92,7 @@ export default debug;
 
 ```js
 import {StyledComponentsDebugger} from 'styles-debugger';
+
 const debug = StyledComponentsDebugger({
 	styles = {
 		element: `
@@ -100,6 +105,7 @@ const debug = StyledComponentsDebugger({
 		`
 	}
 });
+
 export default debug;
 ```
 
@@ -107,6 +113,7 @@ export default debug;
 
 ```js
 import {JavascriptStylesDebugger} from 'styles-debugger';
+
 const debug = JavascriptStylesDebugger({
 	styles = {
 		element: {
@@ -119,6 +126,7 @@ const debug = JavascriptStylesDebugger({
 		}
 	}
 });
+
 export default debug;
 ```
 
