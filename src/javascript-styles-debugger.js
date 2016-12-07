@@ -26,8 +26,9 @@ const debugObjects = (params = {}) => {
       ...displayText && {
         [`:${pseudoElement}`]: {
           content: `"${text}"`,
-          backgroundColor: 'yellow',
-          color: 'red',
+          color: 'gray',
+          backgroundColor: '#eaeaea',
+          fontSize: 12,
           padding: '2px 10px',
           textAlign: 'center',
           position: 'absolute',

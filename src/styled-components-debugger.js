@@ -27,6 +27,7 @@ const debugTemplateLiterals = (params = {}) => {
           content: '${text}';
           background-color: #eaeaea;
           color: gray;
+          font-size: 12px;
           padding: 2px 10px;
           text-align: center;
           position: absolute;
