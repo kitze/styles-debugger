@@ -1,7 +1,7 @@
 # Styles Debugger
 ### Visual helper for debugging style in CSS-in-JS apps
   
-v0.0.1 🎉 - by [@thekitze](http://kitze.io)
+v0.0.3 🎉 - by [@thekitze](http://kitze.io)
 
 ```npm install styles-debugger --save```
 

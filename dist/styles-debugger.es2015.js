@@ -12,7 +12,7 @@ var debugTemplateLiterals = function debugTemplateLiterals() {
 
 
   if (params.debugMode === false) {
-    return;
+    return function () {};
   }
 
   var _params$styles = params.styles,
@@ -140,7 +140,7 @@ var debugObjects = function debugObjects() {
 
 
   if (params.debugMode === false) {
-    return;
+    return function () {};
   }
 
   var _params$styles = params.styles,
