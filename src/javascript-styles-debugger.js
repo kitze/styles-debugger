@@ -1,22 +1,25 @@
 import {getRandomColor} from './utils';
 
-const debugObjects = (params = {}) => {
+const debugObjects = (defaultParams = {}) => {
 
-  if(params.debugMode === false){
+  if(defaultParams.debugMode === false){
     return () => {}
   }
 
-  const {
-          styles                    = {},
-          pseudoElement             = 'after',
-          color: defaultColor       = 'random',
-          debugWith                 = 'border',
-          borderSize                = 1,
-          showText                  = true,
-          position: defaultPosition = 1,
-        }                           = params;
+  return (text, params = {}) => {
 
-  return (text, {color = defaultColor === 'random' ? getRandomColor() : defaultColor, position = defaultPosition} = {}) => {
+    const mergedParams = {...defaultParams, ...params};
+
+    const {
+            styles                    = {},
+            pseudoElement             = 'after',
+            color                     = params.color ? params.color : getRandomColor(),
+            debugWith                 = 'border',
+            borderSize                = 1,
+            showText                  = true,
+            position                  = 1,
+          }                           = mergedParams;
+
     const displayText = showText === true && !!text;
     return {
       ...displayText && {position: 'relative'},
