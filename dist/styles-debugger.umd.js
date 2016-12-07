@@ -13,42 +13,6 @@ var getRandomColor = function getRandomColor() {
   return color;
 };
 
-var debugTemplateLiterals = function debugTemplateLiterals() {
-  var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-
-  if (params.debugMode === false) {
-    return function () {};
-  }
-
-  var _params$styles = params.styles,
-      styles = _params$styles === undefined ? {} : _params$styles,
-      _params$pseudoElement = params.pseudoElement,
-      pseudoElement = _params$pseudoElement === undefined ? 'after' : _params$pseudoElement,
-      _params$color = params.color,
-      defaultColor = _params$color === undefined ? 'random' : _params$color,
-      _params$debugWith = params.debugWith,
-      debugWith = _params$debugWith === undefined ? 'border' : _params$debugWith,
-      _params$borderSize = params.borderSize,
-      borderSize = _params$borderSize === undefined ? 1 : _params$borderSize,
-      _params$showText = params.showText,
-      showText = _params$showText === undefined ? true : _params$showText,
-      _params$position = params.position,
-      defaultPosition = _params$position === undefined ? 1 : _params$position;
-
-
-  return function (text) {
-    var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
-        _ref$color = _ref.color,
-        color = _ref$color === undefined ? defaultColor === 'random' ? getRandomColor() : defaultColor : _ref$color,
-        _ref$position = _ref.position,
-        position = _ref$position === undefined ? defaultPosition : _ref$position;
-
-    var displayText = showText === true && !!text;
-    return '\n      ' + (displayText && 'position: relative') + ';\n      ' + (debugWith === 'border' && 'border: ' + borderSize + 'px solid ' + color) + ';\n      ' + (debugWith === 'background' && 'background-color: ' + color) + ';\n      ' + styles.element + ';\n      ' + (displayText && '&:' + pseudoElement + '{\n          content: \'' + text + '\';\n          background-color: #eaeaea;\n          color: gray;\n          font-size: 12px;\n          padding: 2px 10px;\n          text-align: center;\n          position: absolute;\n          ' + (position === 1 && '\n            top: 0;\n            left: 0;\n          ') + ';\n          ' + (position === 2 && '\n            top: 0;\n            right: 0;\n          ') + ';\n          ' + (position === 3 && '\n            bottom: 0;\n            right: 0;\n          ') + ';\n          ' + (position === 4 && '\n            bottom: 0;\n            left: 0;\n          ') + ';\n          ' + styles.name + ';\n      }');
-  };
-};
-
 var defineProperty = function (obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, {
@@ -141,36 +105,70 @@ var set = function set(object, property, value, receiver) {
   return value;
 };
 
-var debugObjects = function debugObjects() {
-  var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+var debugTemplateLiterals = function debugTemplateLiterals() {
+  var defaultParams = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
 
-  if (params.debugMode === false) {
+  if (defaultParams.debugMode === false) {
     return function () {};
   }
 
-  var _params$styles = params.styles,
-      styles = _params$styles === undefined ? {} : _params$styles,
-      _params$pseudoElement = params.pseudoElement,
-      pseudoElement = _params$pseudoElement === undefined ? 'after' : _params$pseudoElement,
-      _params$color = params.color,
-      defaultColor = _params$color === undefined ? 'random' : _params$color,
-      _params$debugWith = params.debugWith,
-      debugWith = _params$debugWith === undefined ? 'border' : _params$debugWith,
-      _params$borderSize = params.borderSize,
-      borderSize = _params$borderSize === undefined ? 1 : _params$borderSize,
-      _params$showText = params.showText,
-      showText = _params$showText === undefined ? true : _params$showText,
-      _params$position = params.position,
-      defaultPosition = _params$position === undefined ? 1 : _params$position;
+  return function (text) {
+    var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
+
+    var mergedParams = _extends({}, defaultParams, params);
+
+    var _mergedParams$styles = mergedParams.styles,
+        styles = _mergedParams$styles === undefined ? {} : _mergedParams$styles,
+        _mergedParams$pseudoE = mergedParams.pseudoElement,
+        pseudoElement = _mergedParams$pseudoE === undefined ? 'after' : _mergedParams$pseudoE,
+        _mergedParams$color = mergedParams.color,
+        color = _mergedParams$color === undefined ? params.color ? params.color : getRandomColor() : _mergedParams$color,
+        _mergedParams$debugWi = mergedParams.debugWith,
+        debugWith = _mergedParams$debugWi === undefined ? 'border' : _mergedParams$debugWi,
+        _mergedParams$borderS = mergedParams.borderSize,
+        borderSize = _mergedParams$borderS === undefined ? 1 : _mergedParams$borderS,
+        _mergedParams$showTex = mergedParams.showText,
+        showText = _mergedParams$showTex === undefined ? true : _mergedParams$showTex,
+        _mergedParams$positio = mergedParams.position,
+        position = _mergedParams$positio === undefined ? 1 : _mergedParams$positio;
+
+
+    var displayText = showText === true && !!text;
+    return '\n      ' + (displayText && 'position: relative') + ';\n      ' + (debugWith === 'border' && 'border: ' + borderSize + 'px solid ' + color) + ';\n      ' + (debugWith === 'background' && 'background-color: ' + color) + ';\n      ' + styles.element + ';\n      ' + (displayText && '&:' + pseudoElement + '{\n          content: \'' + text + '\';\n          background-color: #eaeaea;\n          color: gray;\n          font-size: 12px;\n          padding: 2px 10px;\n          text-align: center;\n          position: absolute;\n          ' + (position === 1 && '\n            top: 0;\n            left: 0;\n          ') + ';\n          ' + (position === 2 && '\n            top: 0;\n            right: 0;\n          ') + ';\n          ' + (position === 3 && '\n            bottom: 0;\n            right: 0;\n          ') + ';\n          ' + (position === 4 && '\n            bottom: 0;\n            left: 0;\n          ') + ';\n          ' + styles.name + ';\n      }');
+  };
+};
+
+var debugObjects = function debugObjects() {
+  var defaultParams = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+
+  if (defaultParams.debugMode === false) {
+    return function () {};
+  }
 
   return function (text) {
-    var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
-        _ref$color = _ref.color,
-        color = _ref$color === undefined ? defaultColor === 'random' ? getRandomColor() : defaultColor : _ref$color,
-        _ref$position = _ref.position,
-        position = _ref$position === undefined ? defaultPosition : _ref$position;
+    var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+
+    var mergedParams = _extends({}, defaultParams, params);
+
+    var _mergedParams$styles = mergedParams.styles,
+        styles = _mergedParams$styles === undefined ? {} : _mergedParams$styles,
+        _mergedParams$pseudoE = mergedParams.pseudoElement,
+        pseudoElement = _mergedParams$pseudoE === undefined ? 'after' : _mergedParams$pseudoE,
+        _mergedParams$color = mergedParams.color,
+        color = _mergedParams$color === undefined ? params.color ? params.color : getRandomColor() : _mergedParams$color,
+        _mergedParams$debugWi = mergedParams.debugWith,
+        debugWith = _mergedParams$debugWi === undefined ? 'border' : _mergedParams$debugWi,
+        _mergedParams$borderS = mergedParams.borderSize,
+        borderSize = _mergedParams$borderS === undefined ? 1 : _mergedParams$borderS,
+        _mergedParams$showTex = mergedParams.showText,
+        showText = _mergedParams$showTex === undefined ? true : _mergedParams$showTex,
+        _mergedParams$positio = mergedParams.position,
+        position = _mergedParams$positio === undefined ? 1 : _mergedParams$positio;
+
 
     var displayText = showText === true && !!text;
     return _extends({}, displayText && { position: 'relative' }, debugWith === 'border' && { border: borderSize + 'px solid ' + color }, debugWith === 'background' && { backgroundColor: color }, styles.element, displayText && defineProperty({}, ':' + pseudoElement, _extends({
