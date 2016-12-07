@@ -73,6 +73,7 @@ export default debug;
 ```
 
 ### Configuration options
+- ```debugMode```: if this is set to ```false``` debug mode will be turned off for all the components (default is ```true```)
 - ```pseudoElement```: which pseudo element to be used: ```after``` or ```before```
 - ```color```: which should be a default color for the border of the element (by default it's a random color)
 - ```debugWith```: what should be used for debugging the elements: ```border``` or ```background``` (default is ```border```)

@@ -1,6 +1,6 @@
 {
   "name": "styles-debugger",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A helper for debugging CSS-in-JS styles",
   "main": "dist/styles-debugger.js",
   "jsnext:main": "dist/styles-debugger.es2015.js",

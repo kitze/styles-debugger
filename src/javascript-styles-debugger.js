@@ -2,6 +2,10 @@ import {getRandomColor} from './utils';
 
 const debugObjects = (params = {}) => {
 
+  if(params.debugMode === false){
+    return;
+  }
+
   const {
           styles                    = {},
           pseudoElement             = 'after',

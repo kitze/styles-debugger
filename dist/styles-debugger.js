@@ -13,6 +13,12 @@ var getRandomColor = function getRandomColor() {
 
 var debugTemplateLiterals = function debugTemplateLiterals() {
   var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+
+  if (params.debugMode === false) {
+    return;
+  }
+
   var _params$styles = params.styles,
       styles = _params$styles === undefined ? {} : _params$styles,
       _params$pseudoElement = params.pseudoElement,
@@ -135,6 +141,12 @@ var set = function set(object, property, value, receiver) {
 
 var debugObjects = function debugObjects() {
   var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+
+  if (params.debugMode === false) {
+    return;
+  }
+
   var _params$styles = params.styles,
       styles = _params$styles === undefined ? {} : _params$styles,
       _params$pseudoElement = params.pseudoElement,
