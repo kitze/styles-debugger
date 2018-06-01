@@ -14,7 +14,7 @@ Made by [Kitze](https://twitter.com/thekitze)
 
 - [CodeSandbox example with styled-components](https://codesandbox.io/s/j0yq16l7v)
 - [CodeSandbox example with emotion](https://codesandbox.io/s/0or563w2yv)
-- [CodeSandbox example with a custom debugger](https://codesandbox.io/s/0or563w2yv)
+- [CodeSandbox example with a custom debugger](https://codesandbox.io/s/ry65nyvr6p)
 
 ![](https://i.imgur.com/ceORWWQ.png)
 
