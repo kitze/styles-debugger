@@ -1,6 +1,8 @@
 # Styles Debugger
+###A helper for visually debugging css-in-js styles. 
 
-A helper for visually debugging css-in-js styles. Works both with template literals or objects.
+- Works both with template literals and objects. 
+- It also works with inline styles but it won't show any text.
 
 Made by [Kitze](https://twitter.com/thekitze)
 
@@ -10,8 +12,9 @@ Made by [Kitze](https://twitter.com/thekitze)
 
 ## Demos
 
-- [CodeSandbox example with styled-components]()
-- [CodeSandbox example with emotion]()
+- [CodeSandbox example with styled-components](https://codesandbox.io/s/j0yq16l7v)
+- [CodeSandbox example with emotion](https://codesandbox.io/s/0or563w2yv)
+- [CodeSandbox example with a custom debugger](https://codesandbox.io/s/0or563w2yv)
 
 ![](https://i.imgur.com/ceORWWQ.png)
 
@@ -57,7 +60,7 @@ const Footer = styled.div`
 
 ## Initialize custom instance
 
-Instead of using the default `debug` function you can create your own debugger. 
+Instead of using the default `debug` function you can create your own debugger.
 Initialize it in some file and customize it the way you want.
 
 ```js
@@ -108,4 +111,4 @@ export default debug;
 
 `debug(text: String, params: Object)`
 
-Each `debug` function call can override the default params object for the debugger with a custom object. So for example if for some element you would like to use specific options for debugging you can just pass them as the `params` parameter. 
+Each `debug` function call can override the default params object for the debugger with a custom object. So for example if for some element you would like to use specific options for debugging you can just pass them as the `params` parameter.
