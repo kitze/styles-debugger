@@ -58,6 +58,12 @@ const Footer = styled.div`
 `;
 ```
 
+### Available params for `debug`
+
+`debug(text: String, params: Object)`
+
+Each `debug` function call can override the default params object for the debugger with a custom object. So for example if for some element you would like to use specific options for debugging you can just pass them as the `params` parameter. [See the available options](https://github.com/kitze/styles-debugger/#configuration-options).
+
 ## Initialize custom instance
 
 Instead of using the default `debug` function you can create your own debugger.
@@ -81,21 +87,6 @@ const debug = CreateStylesDebugger({
 export default debug;
 ```
 
-### Configuring the debugger
-
-```js
-import { JavascriptStylesDebugger } from 'styles-debugger';
-
-const debug = JavascriptStylesDebugger({
-  pseudoElement: 'before',
-  color: 'red',
-  borderSize: 3,
-  position: 3
-});
-
-export default debug;
-```
-
 ### Configuration options
 
 - `enabled`: if this is set to `false` debug mode will be turned off for all the components (default is `true`)
@@ -106,9 +97,3 @@ export default debug;
 - `showText`: enable or disable showing text with pseudo elements for each component (default is true)
 - `pseudoElement`: which pseudo element to be used: `after` or `before`
 - `styles`: an object that can be passed to completely override the styles for `element` (the element that is debugged), and `text` (the pseudo element with the text).
-
-### Available params for `debug`
-
-`debug(text: String, params: Object)`
-
-Each `debug` function call can override the default params object for the debugger with a custom object. So for example if for some element you would like to use specific options for debugging you can just pass them as the `params` parameter.
