@@ -1,5 +1,5 @@
 # Styles Debugger
-###A helper for visually debugging css-in-js styles. 
+### A helper for visually debugging css-in-js styles. 
 
 - Works both with template literals and objects. 
 - It also works with inline styles but it won't show any text.
