@@ -1,7 +1,7 @@
 {
   "name": "styles-debugger",
-  "version": "0.0.5",
-  "description": "A helper for debugging CSS-in-JS styles",
+  "version": "1.0.0",
+  "description": "A helper for debugging css-in-js styles",
   "main": "dist/styles-debugger.js",
   "jsnext:main": "dist/styles-debugger.es2015.js",
   "scripts": {
@@ -29,6 +29,7 @@
     "babel-preset-es2015": "6.14.0",
     "babel-preset-es2015-rollup": "1.2.0",
     "babel-preset-stage-0": "6.5.0",
+    "microbundle": "^0.4.4",
     "rollup-babel-lib-bundler": "3.1.0"
   },
   "rollupBabelLibBundler": {

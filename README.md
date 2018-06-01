@@ -1,141 +1,111 @@
 # Styles Debugger
-### Visual helper for debugging style in CSS-in-JS apps
-  
-v0.0.5 🎉 - by [@thekitze](http://kitze.io)
 
-```npm install styles-debugger --save```
+A helper for visually debugging css-in-js styles. Works both with template literals or objects.
 
--
+Made by [Kitze](https://twitter.com/thekitze)
+
+## Install
+
+`yarn add styles-debugger`
+
+## Demos
+
+- [CodeSandbox example with styled-components]()
+- [CodeSandbox example with emotion]()
 
 ![](https://i.imgur.com/ceORWWQ.png)
 
-### Demo
-- [Example with styled-components](https://github.com/kitze/styles-debugger-styled-components-example)
-- [Example with aphrodite](https://github.com/kitze/styles-debugger-aphrodite-example)
+## Basic usage
 
-### Usage example: styled-components
-
-1. Initialize the debugger (i.e in a separate file ```~/config/styles-debug.js```)
+### With template literals
 
 ```js
-import {StyledComponentsDebugger} from 'styles-debugger';
-const debug = StyledComponentsDebugger();
-export default debug;
-```
-
-2. Import it in a file with styled components (i.e ```~/components/Header/styles.js```)
-
-```js
+import { debug } from 'styles-debugger';
 import styled from 'styled-components';
-import debug from 'config/styles-debug';
 
 const Header = styled.div`
-	width: 100%;
-	background-color: red;
-	height: 50px;
-	${debug('Header')}
+  ${debug()};
 `;
-
 ```
 
-### Usage example: aphrodite, glamor, jss, etc.
-
-1. Initialize the debugger (i.e in a separate file ```~/config/styles-debug.js```)
+### With objects
 
 ```js
-import {JavascriptStylesDebugger} from 'styles-debugger';
-const debug = JavascriptStylesDebugger();
-export default debug;
-```
+import { debug } from 'styles-debugger';
+import emotion from 'react-emotion';
 
-2. Import it in a file with styles (i.e ```~/components/Header/styles.js```)
-
-```js
-import {StyleSheet} from 'aphrodite';
-import debug from 'config/styles-debug';
-
-const styles = StyleSheet.create({
-	Header: {
-		width: '100%',
-		backgroundColor: red,
-		height: 50,
-		...debug('Header')
-	}
+const Header = emotion('div')({
+  ...debug()
 });
 ```
 
-
-### Configuring the debugger
-Each debugger instance can accept an object with params for configuration. For example:
+### Show text along the border
 
 ```js
-import {JavascriptStylesDebugger} from 'styles-debugger';
+const Wrapper = styled.div`
+  ${debug('Wrapper')};
+`;
+```
+
+### Show text + customize options
+
+```js
+const Footer = styled.div`
+  ${debug('Footer', { color: 'blue', debugWith: 'background' })};
+`;
+```
+
+## Initialize custom instance
+
+Instead of using the default `debug` function you can create your own debugger. 
+Initialize it in some file and customize it the way you want.
+
+```js
+import { CreateStylesDebugger } from 'styles-debugger';
+
+const debug = CreateStylesDebugger({
+  color: 'blue',
+  borderSize: 3,
+  position: 2,
+  styles: {
+    text: {
+      color: 'red'
+    }
+  },
+  debugWith: 'background'
+});
+
+export default debug;
+```
+
+### Configuring the debugger
+
+```js
+import { JavascriptStylesDebugger } from 'styles-debugger';
 
 const debug = JavascriptStylesDebugger({
-	pseudoElement: 'before',
-	color: 'red',
-	borderSize: 3,
-	position: 3
+  pseudoElement: 'before',
+  color: 'red',
+  borderSize: 3,
+  position: 3
 });
 
 export default debug;
 ```
 
 ### Configuration options
-- ```debugMode```: if this is set to ```false``` debug mode will be turned off for all the components (default is ```true```)
-- ```pseudoElement```: which pseudo element to be used: ```after``` or ```before```
-- ```color```: which should be a default color for the border of the element (by default it's a random color)
-- ```debugWith```: what should be used for debugging the elements: ```border``` or ```background``` (default is ```border```)
-- ```borderSize```: if using border for debugging, specify the size of the border (default is 1)
-- ```showText```: enable or disable showing text with pseudo elements for each component (default is true)
-- ```position```: pick the corner position for the text: options are ```1 | 2 | 3 | 4``` (default is 1) 
- 
- -
-```styles```: an object that can be passed to completely override the styles for ```element``` (the element that is debugged), and ```text``` (the pseudo element with the text).
 
-**With styled-components**:
+- `enabled`: if this is set to `false` debug mode will be turned off for all the components (default is `true`)
+- `position`: pick the corner position for the text: options are `1 | 2 | 3 | 4` (default is `1`)
+- `color`: which should be a default color for the border of the element (by default it's a random color)
+- `debugWith`: what should be used for debugging the elements: `border` or `background` (default is `border`)
+- `borderSize`: if using border for debugging, specify the size of the border (default is 1)
+- `showText`: enable or disable showing text with pseudo elements for each component (default is true)
+- `pseudoElement`: which pseudo element to be used: `after` or `before`
+- `styles`: an object that can be passed to completely override the styles for `element` (the element that is debugged), and `text` (the pseudo element with the text).
 
-```js
-import {StyledComponentsDebugger} from 'styles-debugger';
+### Available params for `debug`
 
-const debug = StyledComponentsDebugger({
-	styles = {
-		element: `
-			background-color: black;
-			color: white;
-		`,
-		text: `
-			background-color: red;
-			color: yellow
-		`
-	}
-});
+`debug(text: String, params: Object)`
 
-export default debug;
-```
-
-**With others:**
-
-```js
-import {JavascriptStylesDebugger} from 'styles-debugger';
-
-const debug = JavascriptStylesDebugger({
-	styles = {
-		element: {
-			backgroundColor: 'black',
-			color: 'white'
-		},
-		text: {
-			backgroundColor: 'red',
-			color: 'yellow'
-		}
-	}
-});
-
-export default debug;
-```
-
-### Available params for ```debug```
-```debug(text: String, params: Object)```
-
-Each ```debug``` call can override the default params object for the debugger with a custom object. So for example if for some element you would like to use specific options for debugging you can just pass them as the ```params``` parameter. 
+Each `debug` function call can override the default params object for the debugger with a custom object. So for example if for some element you would like to use specific options for debugging you can just pass them as the `params` parameter. 

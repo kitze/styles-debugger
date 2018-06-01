@@ -99,52 +99,19 @@ var set = function set(object, property, value, receiver) {
   return value;
 };
 
-var debugTemplateLiterals = function debugTemplateLiterals() {
-  var defaultParams = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-
-  if (defaultParams.debugMode === false) {
-    return function () {};
-  }
-
-  return function (text) {
-    var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
-
-    var mergedParams = _extends({}, defaultParams, params);
-
-    var _mergedParams$styles = mergedParams.styles,
-        styles = _mergedParams$styles === undefined ? {} : _mergedParams$styles,
-        _mergedParams$pseudoE = mergedParams.pseudoElement,
-        pseudoElement = _mergedParams$pseudoE === undefined ? 'after' : _mergedParams$pseudoE,
-        _mergedParams$color = mergedParams.color,
-        color = _mergedParams$color === undefined ? params.color ? params.color : getRandomColor() : _mergedParams$color,
-        _mergedParams$debugWi = mergedParams.debugWith,
-        debugWith = _mergedParams$debugWi === undefined ? 'border' : _mergedParams$debugWi,
-        _mergedParams$borderS = mergedParams.borderSize,
-        borderSize = _mergedParams$borderS === undefined ? 1 : _mergedParams$borderS,
-        _mergedParams$showTex = mergedParams.showText,
-        showText = _mergedParams$showTex === undefined ? true : _mergedParams$showTex,
-        _mergedParams$positio = mergedParams.position,
-        position = _mergedParams$positio === undefined ? 1 : _mergedParams$positio;
-
-
-    var displayText = showText === true && !!text;
-    return '\n      ' + (displayText && 'position: relative') + ';\n      ' + (debugWith === 'border' && 'border: ' + borderSize + 'px solid ' + color) + ';\n      ' + (debugWith === 'background' && 'background-color: ' + color) + ';\n      ' + styles.element + ';\n      ' + (displayText && '&:' + pseudoElement + '{\n          content: \'' + text + '\';\n          background-color: #eaeaea;\n          color: gray;\n          font-size: 12px;\n          padding: 2px 10px;\n          text-align: center;\n          position: absolute;\n          ' + (position === 1 && '\n            top: 0;\n            left: 0;\n          ') + ';\n          ' + (position === 2 && '\n            top: 0;\n            right: 0;\n          ') + ';\n          ' + (position === 3 && '\n            bottom: 0;\n            right: 0;\n          ') + ';\n          ' + (position === 4 && '\n            bottom: 0;\n            left: 0;\n          ') + ';\n          ' + styles.name + ';\n      }');
-  };
+var iff = function iff(condition, obj) {
+  return condition ? obj : {};
 };
 
-var debugObjects = function debugObjects() {
+var CreateStylesDebugger = function CreateStylesDebugger() {
   var defaultParams = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-
-  if (defaultParams.debugMode === false) {
+  if (defaultParams.enabled === false) {
     return function () {};
   }
 
   return function (text) {
     var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
 
     var mergedParams = _extends({}, defaultParams, params);
 
@@ -153,7 +120,7 @@ var debugObjects = function debugObjects() {
         _mergedParams$pseudoE = mergedParams.pseudoElement,
         pseudoElement = _mergedParams$pseudoE === undefined ? 'after' : _mergedParams$pseudoE,
         _mergedParams$color = mergedParams.color,
-        color = _mergedParams$color === undefined ? params.color ? params.color : getRandomColor() : _mergedParams$color,
+        color = _mergedParams$color === undefined ? params.color || getRandomColor() : _mergedParams$color,
         _mergedParams$debugWi = mergedParams.debugWith,
         debugWith = _mergedParams$debugWi === undefined ? 'border' : _mergedParams$debugWi,
         _mergedParams$borderS = mergedParams.borderSize,
@@ -164,29 +131,33 @@ var debugObjects = function debugObjects() {
         position = _mergedParams$positio === undefined ? 1 : _mergedParams$positio;
 
 
+    console.log('styles', styles);
     var displayText = showText === true && !!text;
-    return _extends({}, displayText && { position: 'relative' }, debugWith === 'border' && { border: borderSize + 'px solid ' + color }, debugWith === 'background' && { backgroundColor: color }, styles.element, displayText && defineProperty({}, ':' + pseudoElement, _extends({
+
+    return _extends({}, iff(displayText, { position: 'relative' }), iff(debugWith === 'border', { border: borderSize + 'px solid ' + color }), iff(debugWith === 'background', { backgroundColor: color }), styles.element, iff(displayText, defineProperty({}, ':' + pseudoElement, _extends({
       content: '"' + text + '"',
       color: 'gray',
       backgroundColor: '#eaeaea',
-      fontSize: 12,
+      fontSize: '12px',
       padding: '2px 10px',
       textAlign: 'center',
       position: 'absolute'
-    }, position === 1 && {
+    }, iff(position === 1, {
       top: 0,
       left: 0
-    }, position === 2 && {
+    }), iff(position === 2, {
       top: 0,
       right: 0
-    }, position === 3 && {
-      bottom: 0,
-      right: 0
-    }, position === 4 && {
+    }), iff(position === 3, {
       bottom: 0,
       left: 0
-    }, styles.name)));
+    }), iff(position === 4, {
+      bottom: 0,
+      right: 0
+    }), styles.name))));
   };
 };
 
-export { debugTemplateLiterals as StyledComponentsDebugger, debugObjects as JavascriptStylesDebugger };
+var defaultDebugger = CreateStylesDebugger();
+
+export { defaultDebugger as debug, CreateStylesDebugger };

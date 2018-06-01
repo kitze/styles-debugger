@@ -1,4 +1,4 @@
-import StyledComponentsDebugger from './src/styled-components-debugger';
-import JavascriptStylesDebugger from './src/javascript-styles-debugger';
+import CreateStylesDebugger from './src/create-styles-debugger';
+import debug from './src/default-debugger';
 
-export {StyledComponentsDebugger, JavascriptStylesDebugger};
+export { debug, CreateStylesDebugger };
