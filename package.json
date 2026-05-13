@@ -29,7 +29,7 @@
     "babel-preset-es2015": "6.14.0",
     "babel-preset-es2015-rollup": "1.2.0",
     "babel-preset-stage-0": "6.5.0",
-    "microbundle": "^0.4.4",
+    "microbundle": "^0.15.1",
     "rollup-babel-lib-bundler": "3.1.0"
   },
   "rollupBabelLibBundler": {
