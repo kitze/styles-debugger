@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/kitze/styles-debugger#readme",
   "devDependencies": {
-    "babel-plugin-add-module-exports": "0.2.1",
+    "babel-plugin-add-module-exports": "1.0.4",
     "babel-polyfill": "6.13.0",
     "babel-preset-es2015": "6.14.0",
     "babel-preset-es2015-rollup": "1.2.0",
